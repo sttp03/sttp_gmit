@@ -5,6 +5,7 @@ import os
 import numpy as np 
 import pandas as pd 
 import psycopg2
+from .models import insurance
 
 # Create your views here.
 def index(request):
@@ -22,5 +23,9 @@ def result(request):
     list.append(float(request.GET['region']))
 
     answer = model.predict([list]).tolist()[0]
+
+    b = insurance(age=request.GET['age'],sex=request.GET['sex'],bmi=request.GET['bmi'],children=request.GET['children'],
+                  smoker=request.GET['smoker'],region=request.GET['region'], expenses=answer)
+    b.save()
 
     return render(request, "index.html", {"answer":answer})
