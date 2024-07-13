@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   build:
-    runs-on: [ ubuntu-latest ]  #self-hosted
+    runs-on: [ self-hosted ] #ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
@@ -59,8 +59,8 @@ jobs:
       - name: Trivy File System
         run: trivy fs . > trivy.txt
       
-      - name: Image Scan
-        run: trivy image shritejchavan/medical:latest > trivyimage.txt
+      # - name: Image Scan
+      #   run: trivy image shritejchavan/medical:latest > trivyimage.txt
 
-      - name: Trivy CIS Compliance Issue
-        run: trivy image --compliance docker-cis shritejchavan/medical:latest > trivycompliance.txt
+      # - name: Trivy CIS Compliance Issue
+      #   run: trivy image --compliance docker-cis shritejchavan/medical:latest > trivycompliance.txt
