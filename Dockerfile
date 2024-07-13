@@ -3,7 +3,7 @@ FROM python:3.12.4-slim
 LABEL maintainer="Shritej"
 ENV PYTHONUNBUFFERED 1
 
-COPY ./requirements.txt requirements.txt
+COPY ./requirements.txt requirements_docker.txt
 
 COPY ./webapp /webapp
 
@@ -14,7 +14,7 @@ EXPOSE 8000
 
 RUN python -m venv /py && \
 /py/bin/pip install --upgrade pip && \
-/py/bin/pip install -r /requirements.txt && \
+/py/bin/pip install -r /requirements_docker.txt && \
 adduser --disabled-password --no-create-home webapp
 
 ENV PATH="/py/bin/$PATH"
