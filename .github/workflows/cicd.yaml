@@ -30,10 +30,10 @@ jobs:
 
       - name: Docker Build and Push to Docker Hub
         run: |
-         docker build -t medical .
-         docker tag medical shritejchavan/medical:latest
-         docker login -u ${{secrets.DOCKERHUB_USERNAME}} -p ${{ secrets.DOCKERHUB_TOKEN }}
-         docker push shritejchavan/medical:latest
+          docker build -t medical .
+          docker tag medical shritejchavan/medical:latest
+          docker login -u ${{secrets.DOCKERHUB_USERNAME}} -p ${{ secrets.DOCKERHUB_TOKEN }}
+          docker push shritejchavan/medical:latest
         env:
           DOCKER_CLI_ACI: 1
         
